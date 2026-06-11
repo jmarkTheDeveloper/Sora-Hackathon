@@ -56,6 +56,17 @@ graph TD
 
 ---
 
+## 🎯 Problem Statement
+
+Modern users juggle **multiple disconnected applications** to manage their financial lives — one app per bank account, another for subscriptions, a separate tool for budgets, and yet another for savings goals. This fragmentation leads to:
+
+- **No unified view** of total financial health across accounts
+- **Missed subscription costs** buried across different billing portals
+- **Manual reconciliation** between tools, prone to human error
+- **Zero intelligent assistance** — generic apps don't understand your specific accounts or spending patterns
+
+**Sora solves this by consolidating the entire personal finance workflow into one grounded, AI-assisted dashboard.** Instead of switching between five apps, users get a single workspace where Microsoft Credits, subscriptions, savings goals, and budget categories all live together — with a Foundry IQ agent that can answer questions about *your actual data*, not generic financial advice.
+
 ## 🎨 Creative App Key Features
 
 - **Zero-Friction Launch**: Instantly loads the populated dashboard for the judge, bypassing registration and login friction.
