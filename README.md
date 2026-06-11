@@ -6,6 +6,15 @@ Sora port is translated from a legacy JavaFX desktop application into a modern, 
 
 It integrates the **Microsoft Foundry IQ** intelligence retrieval layer as a local grounded knowledge assistant to answer user budgeting questions with precise citations.
 
+> [!NOTE]
+> **Disclaimer**: This project is built solely as an educational submission for the **Agents League Hackathon @ AI Skills Fest 2026**. It is not affiliated with, sponsored by, or endorsed by Microsoft Corporation.
+
+Sora is an intelligent, premium personal finance and budget tracking web application built for the **Agents League Hackathon @ AI Skills Fest 2026** under the **Creative Apps** track. 
+
+Sora port is translated from a legacy JavaFX desktop application into a modern, web-based single-page application. To align with Microsoft's ecosystem, all bank account options and subscriptions have been adapted into Microsoft products and service models (such as Azure Credits and M365 Copilot).
+
+It integrates the **Microsoft Foundry IQ** intelligence retrieval layer as a local grounded knowledge assistant to answer user budgeting questions with precise citations.
+
 ---
 
 ## 🎨 Creative App Key Features
