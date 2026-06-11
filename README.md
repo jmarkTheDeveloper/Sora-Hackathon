@@ -11,6 +11,51 @@ It integrates the **Microsoft Foundry IQ** intelligence retrieval layer as a loc
 
 ---
 
+## �️ Architecture Diagram
+
+The following diagram illustrates Sora's architecture and how it integrates with Microsoft Foundry IQ and Azure OpenAI, as well as indicating its AI-assisted development via GitHub Copilot (meeting the Creative Apps track requirements).
+
+```mermaid
+graph TD
+    classDef copilot fill:#2ea043,stroke:#238636,color:white;
+    classDef azure fill:#0078d4,stroke:#005a9e,color:white;
+    classDef foundry fill:#5c2d91,stroke:#3b1e5e,color:white;
+
+    subgraph Dev["✨ AI-Assisted Development"]
+        GC[GitHub Copilot]:::copilot -->|Translated Legacy Java to Web SPA| Repo[Sora Codebase]
+    end
+
+    subgraph Client["💻 Sora Web Client (Frontend)"]
+        UI[Web Dashboard UI]
+        Tracer[Foundry IQ Visual Tracer]
+    end
+
+    subgraph Server["⚙️ Flask Server (app.py)"]
+        API[REST API Interfaces]
+        Router[Foundry IQ Query Router]
+        LocalFallback[Local Text-Composer Fallback]
+    end
+
+    subgraph IQ["🧠 Microsoft Foundry IQ Integration"]
+        Docs[(Enterprise Documents\nfoundry_iq_docs/)]:::foundry
+        Azure[Azure OpenAI Service/SDK]:::azure
+    end
+
+    Client <-->|User Prompts & Dashboard Data| API
+    API --> Router
+    
+    Router -->|1. Context & ACL Check| Docs
+    Docs -->|2. Grounding Assets| Router
+    
+    Router -->|3. Construct Prompt| Azure
+    Azure -->|4. AI Response| API
+    
+    Router -.->|Alternative: If keys missing| LocalFallback
+    LocalFallback -.->|Local regex extraction| API
+```
+
+---
+
 ## 🎨 Creative App Key Features
 
 - **Zero-Friction Launch**: Instantly loads the populated dashboard for the judge, bypassing registration and login friction.
