@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sora - Unlock Your Financial Clarity</title>
+    <!-- Modern Premium Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome for UI Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/loginStyle.css">
+    <link rel="stylesheet" href="css/DashboardStyle.css">
+</head>
+<body class="theme-blue">
+
+
+
+
+    <!-- ==================== DASHBOARD CONTAINER ==================== -->
+    <div id="dashboard-container" class="dashboard-wrapper">
+        <!-- Left Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <i class="fa-solid fa-feather-pointed logo-icon"></i>
+                <span class="logo-text">SORA</span>
+            </div>
+            
+            <div class="sidebar-section-label">Overview</div>
+            <button class="sidebar-btn active" onclick="showTab('overview')">
+                <i class="fa-solid fa-chart-pie"></i>
+                <span class="sidebar-btn-text">Dashboard</span>
+            </button>
+            <button class="sidebar-btn" onclick="showTab('transactions')">
+                <i class="fa-solid fa-list-check"></i>
+                <span class="sidebar-btn-text">Transactions</span>
+            </button>
+            <button class="sidebar-btn" onclick="showTab('accounts')">
+                <i class="fa-solid fa-wallet"></i>
+                <span class="sidebar-btn-text">Accounts</span>
+            </button>
+
+            <div class="sidebar-section-label">App Tracer</div>
+            <button class="sidebar-btn" onclick="showTab('goals')">
+                <i class="fa-solid fa-bullseye"></i>
+                <span class="sidebar-btn-text">Goals</span>
+            </button>
+            <button class="sidebar-btn" onclick="showTab('subscriptions')">
+                <i class="fa-solid fa-rotate"></i>
+                <span class="sidebar-btn-text">Subscriptions</span>
+            </button>
+            <button class="sidebar-btn" onclick="showTab('budgets')">
+                <i class="fa-solid fa-chart-simple"></i>
+                <span class="sidebar-btn-text">Budgets</span>
+            </button>
+            <button class="sidebar-btn agent-menu-btn" onclick="showTab('agent')">
+                <i class="fa-solid fa-robot"></i>
+                <span class="sidebar-btn-text">Sora Agent</span>
+            </button>
+
+            <div class="sidebar-section-label">System</div>
+            <button class="sidebar-btn" onclick="showTab('settings')">
+                <i class="fa-solid fa-gear"></i>
+                <span class="sidebar-btn-text">Settings</span>
+            </button>
+
+            <div class="sidebar-spacer"></div>
+            
+            <button class="logout-btn" style="background-color: var(--theme-mid); box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);" onclick="resetMockData()">
+                <i class="fa-solid fa-rotate-left"></i> Reset Data
+            </button>
+        </aside>
+
+        <!-- Main Workspace Area -->
+        <div class="main-workspace">
+            <header class="top-header">
+                <h2 id="current-tab-title">Dashboard</h2>
+                <div class="header-user-info">
+                    <span class="welcome-user-text">Hello, <strong id="user-display-name">User</strong></span>
+                    <div class="user-avatar">
+                        <i class="fa-solid fa-user-astronaut"></i>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Scrollable Content Pane -->
+            <div class="content-scroll-pane">
+                
+                <!-- TAB: OVERVIEW -->
+                <div id="tab-overview" class="tab-content active">
+                    <!-- Balance Bar -->
+                    <div class="balance-bar">
+                        <div class="balance-total-section">
+                            <span class="balance-title">TOTAL BALANCE</span>
+                            <h1 class="balance-total" id="overview-total-balance">$0.00</h1>
+                        </div>
+                        <div class="balance-stats-section">
+                            <div class="balance-stat">
+                                <span class="balance-stat-value text-income" id="overview-total-income">$0.00</span>
+                                <span class="balance-stat-label">Total Income</span>
+                            </div>
+                            <div class="balance-stat">
+                                <span class="balance-stat-value text-expense" id="overview-total-spent">$0.00</span>
+                                <span class="balance-stat-label">Total Spent</span>
+                            </div>
+                            <div class="balance-stat">
+                                <span class="balance-stat-value" id="overview-net-balance">$0.00</span>
+                                <span class="balance-stat-label">Balance</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Personal Savings Wallet -->
+                    <div class="personal-wallet-bar">
+                        <div class="wallet-left">
+                            <span class="wallet-label">Personal Savings Wallet</span>
+                            <h2 class="wallet-amount" id="overview-wallet-balance">$0.00</h2>
+                        </div>
+                        <div class="wallet-actions">
+                            <button class="wallet-btn deposit-btn" onclick="openWalletDialog('Deposit')">
+                                <i class="fa-solid fa-plus"></i> Add Savings
+                            </button>
+                            <button class="wallet-btn withdraw-btn" onclick="openWalletDialog('Withdraw')">
+                                <i class="fa-solid fa-minus"></i> Use Savings
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Cards Grid -->
+                    <div class="dashboard-grid">
+                        <!-- Accounts Card -->
+                        <div class="dash-card">
+                            <div class="card-header">
+                                <h3>Accounts</h3>
+                                <i class="fa-solid fa-building-columns"></i>
+                            </div>
+                            <div class="card-list" id="overview-accounts-list">
+                                <!-- Loaded dynamically -->
+                            </div>
+                            <a href="#" class="card-link" onclick="showTab('accounts')">Manage Accounts &rarr;</a>
+                        </div>
+
+                        <!-- Savings Goals Card -->
+                        <div class="dash-card">
+                            <div class="card-header">
+                                <h3>Savings Goals</h3>
+                                <i class="fa-solid fa-bullseye"></i>
+                            </div>
+                            <div class="card-list" id="overview-goals-list">
+                                <!-- Loaded dynamically -->
+                            </div>
+                            <a href="#" class="card-link" onclick="showTab('goals')">Manage Goals &rarr;</a>
+                        </div>
+
+                        <!-- Spending Breakdown Card -->
+                        <div class="dash-card">
+                            <div class="card-header">
+                                <h3>Spending Breakdown</h3>
+                                <i class="fa-solid fa-chart-pie"></i>
+                            </div>
+                            <div class="chart-container">
+                                <canvas id="spending-chart" width="200" height="200"></canvas>
+                                <div class="chart-center-overlay">
+                                    <span class="chart-overlay-amount" id="chart-total-spent">$0.00</span>
+                                    <span class="chart-overlay-lbl">This month</span>
+                                </div>
+                            </div>
+                            <div class="breakdown-list" id="overview-breakdown-list">
+                                <!-- Loaded dynamically -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Budget limits row -->
+                    <div class="dash-card budget-summary-card">
+                        <div class="card-header">
+                            <h3>Budget Limits</h3>
+                            <i class="fa-solid fa-chart-simple"></i>
+                        </div>
+                        <div class="budget-horizontal-row" id="overview-budgets-list">
+                            <!-- Loaded dynamically -->
+                        </div>
+                        <a href="#" class="card-link" onclick="showTab('budgets')">Edit Budgets &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- TAB: TRANSACTIONS -->
+                <div id="tab-transactions" class="tab-content">
+                    <div class="tab-header-row">
+                        <h3>Transaction History</h3>
+                        <button class="action-btn" onclick="openAddTransactionModal()">
+                            <i class="fa-solid fa-plus"></i> Add Transaction
+                        </button>
+                    </div>
+                    <div class="table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Description</th>
+                                    <th>Category</th>
+                                    <th>Type</th>
+                                    <th>Amount</th>
+                                    <th>Account</th>
+                                    <th>Date</th>
+                                </tr>
+                            </thead>
+                            <tbody id="transactions-table-body">
+                                <!-- Loaded dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- TAB: ACCOUNTS -->
+                <div id="tab-accounts" class="tab-content">
+                    <div class="tab-header-row">
+                        <h3>Microsoft Wallets & Ledgers</h3>
+                        <button class="action-btn" onclick="openAddAccountModal()">
+                            <i class="fa-solid fa-plus"></i> Add Account
+                        </button>
+                    </div>
+                    <div class="accounts-grid" id="accounts-cards-container">
+                        <!-- Loaded dynamically -->
+                    </div>
+                </div>
+
+                <!-- TAB: GOALS -->
+                <div id="tab-goals" class="tab-content">
+                    <div class="tab-header-row">
+                        <h3>Savings Goals</h3>
+                        <button class="action-btn" onclick="openAddGoalModal()">
+                            <i class="fa-solid fa-plus"></i> Add Goal
+                        </button>
+                    </div>
+                    <div class="goals-list-container" id="goals-list-container">
+                        <!-- Loaded dynamically -->
+                    </div>
+                </div>
+
+                <!-- TAB: SUBSCRIPTIONS -->
+                <div id="tab-subscriptions" class="tab-content">
+                    <div class="tab-header-row">
+                        <h3>Microsoft Subscriptions</h3>
+                        <button class="action-btn" onclick="openAddSubscriptionModal()">
+                            <i class="fa-solid fa-plus"></i> Add Subscription
+                        </button>
+                    </div>
+                    <div class="subscriptions-list-container" id="subscriptions-list-container">
+                        <!-- Loaded dynamically -->
+                    </div>
+                </div>
+
+                <!-- TAB: BUDGETS -->
+                <div id="tab-budgets" class="tab-content">
+                    <div class="tab-header-row">
+                        <h3>Category Budget Limits</h3>
+                        <button class="action-btn" onclick="openSetBudgetModal()">
+                            <i class="fa-solid fa-sliders"></i> Set Budget
+                        </button>
+                    </div>
+                    <div class="budgets-list-container" id="budgets-list-container">
+                        <!-- Loaded dynamically -->
+                    </div>
+                </div>
+
+                <!-- TAB: SORA AGENT (FOUNDRY IQ CHAT) -->
+                <div id="tab-agent" class="tab-content">
+                    <div class="agent-layout">
+                        <div class="agent-chat-card">
+                            <div class="agent-header">
+                                <div class="agent-avatar-status">
+                                    <div class="agent-avatar"><i class="fa-solid fa-robot"></i></div>
+                                    <div class="agent-info">
+                                        <h4>SORA FINANCIAL AGENT</h4>
+                                        <span class="agent-status-tag"><i class="fa-solid fa-shield-halved"></i> Microsoft Foundry IQ Grounded</span>
+                                    </div>
+                                </div>
+                                <div class="azure-status-badge" id="azure-openai-indicator">
+                                    <span class="dot offline"></span> Offline
+                                </div>
+                            </div>
+                            
+                            <div class="chat-messages-area" id="chat-messages">
+                                <div class="chat-message agent">
+                                    <p>Hello! I am Sora, your AI financial advisor grounded in your enterprise knowledge base via Microsoft Foundry IQ. Ask me anything about your budgets, savings strategies, or Azure credits!</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Retrieval Tracer Animation Panel -->
+                            <div id="retrieval-tracer" class="retrieval-tracer-panel" style="display: none;">
+                                <div class="tracer-title">Foundry IQ Agentic Retrieval Process:</div>
+                                <ul class="tracer-steps" id="tracer-steps-list">
+                                    <!-- Log steps added dynamically -->
+                                </ul>
+                            </div>
+
+                            <form id="agent-chat-form" class="chat-input-row">
+                                <input type="text" id="agent-user-prompt" placeholder="Ask Sora anything (e.g., 'Should I save more?' or 'How do Azure credits work?')" required>
+                                <button type="submit" class="chat-send-btn">
+                                    <i class="fa-solid fa-paper-plane"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB: SETTINGS -->
+                <div id="tab-settings" class="tab-content">
+                    <div class="settings-grid">
+                        <div class="dash-card settings-card">
+                            <h3>Edit Profile</h3>
+                            <form id="profile-form">
+                                <div class="form-group">
+                                    <label for="settings-firstname">First Name</label>
+                                    <input type="text" id="settings-firstname" class="settings-input" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="settings-lastname">Last Name</label>
+                                    <input type="text" id="settings-lastname" class="settings-input" required>
+                                </div>
+                                <button type="submit" class="action-btn">Save Profile</button>
+                            </form>
+                        </div>
+                        
+                        <div class="dash-card settings-card">
+                            <h3>Dashboard Theme</h3>
+                            <p class="settings-help-text">Select a workspace color palette. Theme will update in real-time.</p>
+                            <div class="theme-color-palette">
+                                <button class="theme-circle color-blue active" onclick="changeTheme('theme-blue')" title="Default Blue"></button>
+                                <button class="theme-circle color-purple" onclick="changeTheme('theme-purple')" title="Deep Purple"></button>
+                                <button class="theme-circle color-green" onclick="changeTheme('theme-green')" title="Forest Green"></button>
+                                <button class="theme-circle color-rose" onclick="changeTheme('theme-rose')" title="Rose Red"></button>
+                                <button class="theme-circle color-dark" onclick="changeTheme('theme-dark')" title="Midnight Dark"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== DIALOG / MODAL WINDOWS ==================== -->
+
+    <!-- Modal Backdrop -->
+    <div id="modal-backdrop" class="modal-backdrop" style="display: none;"></div>
+
+    <!-- Add Account Modal -->
+    <div id="modal-add-account" class="modal-box" style="display: none;">
+        <div class="modal-header">
+            <h3>Add Microsoft Account</h3>
+            <button class="modal-close" onclick="closeAllModals()">&times;</button>
+        </div>
+        <form id="form-add-account">
+            <div class="form-group">
+                <label>Account Name</label>
+                <select id="acc-name-select" class="settings-input" onchange="checkCustomAccountName(this)">
+                    <option value="Azure Credits Wallet">Azure Credits Wallet</option>
+                    <option value="Work IQ Ledger">Work IQ Ledger</option>
+                    <option value="Microsoft Fabric Capacity Credits">Microsoft Fabric Capacity Credits</option>
+                    <option value="Microsoft Pay (Corporate)">Microsoft Pay (Corporate)</option>
+                    <option value="custom">-- Add Custom Account Name --</option>
+                </select>
+                <input type="text" id="acc-name-custom" class="settings-input" style="display:none; margin-top:8px;" placeholder="Custom Account Name">
+            </div>
+            <div class="form-group">
+                <label>Account Type</label>
+                <select id="acc-type" class="settings-input">
+                    <option value="Savings Account">Savings Account</option>
+                    <option value="Checking Account">Checking Account</option>
+                    <option value="Credit Card">Credit Card</option>
+                    <option value="E-Wallet">E-Wallet</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Initial Balance ($)</label>
+                <input type="number" step="0.01" id="acc-balance" class="settings-input" value="0.00" required>
+            </div>
+            <div class="form-group">
+                <label>Account Number (Optional)</label>
+                <input type="text" id="acc-number" class="settings-input" placeholder="e.g. MS-112-998">
+            </div>
+            <div class="modal-actions">
+                <button type="button" class="btn-cancel" onclick="closeAllModals()">Cancel</button>
+                <button type="submit" class="btn-submit">Add Account</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Deposit/Withdraw (Account) Modal -->
+    <div id="modal-account-action" class="modal-box" style="display: none;">
+        <div class="modal-header">
+            <h3 id="acc-action-title">Account Action</h3>
+            <button class="modal-close" onclick="closeAllModals()">&times;</button>
+        </div>
+        <form id="form-account-action">
+            <input type="hidden" id="acc-action-name">
+            <input type="hidden" id="acc-action-type">
+            <div class="form-group">
+                <label id="acc-action-label">Amount ($)</label>
+                <input type="number" step="0.01" id="acc-action-amount" class="settings-input" value="0.00" required>
+            </div>
+            <div class="modal-actions">
+                <button type="button" class="btn-cancel" onclick="closeAllModals()">Cancel</button>
+                <button type="submit" class="btn-submit" id="acc-action-submit-btn">Execute</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Add Transaction Modal -->
+    <div id="modal-add-transaction" class="modal-box" style="display: none;">
+        <div class="modal-header">
+            <h3>Record New Transaction</h3>
+            <button class="modal-close" onclick="closeAllModals()">&times;</button>
+        </div>
+        <form id="form-add-transaction">
+            <div class="form-group">
+                <label>Description</label>
+                <input type="text" id="txn-desc" class="settings-input" placeholder="e.g. Replenishment Credits" required>
+            </div>
+            <div class="form-group">
+                <label>Category</label>
+                <input type="text" id="txn-category" class="settings-input" placeholder="e.g. Azure, Copilot, Salary" required>
+            </div>
+            <div class="form-group">
+                <label>Transaction Type</label>
+                <select id="txn-type" class="settings-input">
+                    <option value="Expense">Expense</option>
+                    <option value="Income">Income</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Amount ($)</label>
+                <input type="number" step="0.01" id="txn-amount" class="settings-input" value="0.00" required>
+            </div>
+            <div class="form-group">
+                <label>From/To Account</label>
+                <select id="txn-account-select" class="settings-input">
+                    <!-- Populated dynamically -->
+                </select>
+            </div>
+            <div class="modal-actions">
+                <button type="button" class="btn-cancel" onclick="closeAllModals()">Cancel</button>
+                <button type="submit" class="btn-submit">Record</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Add Goal Modal -->
+    <div id="modal-add-goal" class="modal-box" style="display: none;">
+        <div class="modal-header">
+            <h3>Create Savings Goal</h3>
+            <button class="modal-close" onclick="closeAllModals()">&times;</button>
+        </div>
+        <form id="form-add-goal">
+            <div class="form-group">
+                <label>Goal Name</label>
+                <input type="text" id="goal-name" class="settings-input" placeholder="e.g. Annual M365 Copilot Bundle" required>
+            </div>
+            <div class="form-group">
+                <label>Target Amount ($)</label>
+                <input type="number" step="0.01" id="goal-target" class="settings-input" placeholder="e.g. 2000" required>
+            </div>
+            <div class="form-group">
+                <label>Initial Saved Amount ($)</label>
+                <input type="number" step="0.01" id="goal-saved" class="settings-input" value="0.00" required>
+            </div>
+            <div class="modal-actions">
+                <button type="button" class="btn-cancel" onclick="closeAllModals()">Cancel</button>
+                <button type="submit" class="btn-submit">Create Goal</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Deposit/Withdraw (Goal) Modal -->
+    <div id="modal-goal-action" class="modal-box" style="display: none;">
+        <div class="modal-header">
+            <h3 id="goal-action-title">Deposit to Goal</h3>
+            <button class="modal-close" onclick="closeAllModals()">&times;</button>
+        </div>
+        <form id="form-goal-action">
+            <input type="hidden" id="goal-action-id">
+            <input type="hidden" id="goal-action-type"> <!-- 'Deposit' or 'Withdraw' -->
+            <div class="form-group">
+                <label>Amount ($)</label>
+                <input type="number" step="0.01" id="goal-action-amount" class="settings-input" value="0.00" required>
+            </div>
+            <div class="form-group">
+                <label id="goal-action-account-label">Source Account</label>
+                <select id="goal-action-account-select" class="settings-input">
+                    <!-- Populated dynamically -->
+                </select>
+            </div>
+            <div class="modal-actions">
+                <button type="button" class="btn-cancel" onclick="closeAllModals()">Cancel</button>
+                <button type="submit" class="btn-submit" id="goal-action-submit-btn">Confirm</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Add Subscription Modal -->
+    <div id="modal-add-subscription" class="modal-box" style="display: none;">
+        <div class="modal-header">
+            <h3>Add Microsoft Subscription</h3>
+            <button class="modal-close" onclick="closeAllModals()">&times;</button>
+        </div>
+        <form id="form-add-subscription">
+            <div class="form-group">
+                <label>Subscription Service</label>
+                <select id="sub-name-select" class="settings-input" onchange="checkCustomSubscriptionName(this)">
+                    <option value="Microsoft 365 Copilot (Enterprise)">Microsoft 365 Copilot (Enterprise)</option>
+                    <option value="GitHub Copilot Pro+">GitHub Copilot Pro+</option>
+                    <option value="Xbox Game Pass Ultimate">Xbox Game Pass Ultimate</option>
+                    <option value="Azure Pay-As-You-Go">Azure Pay-As-You-Go</option>
+                    <option value="Power BI Premium Capacity">Power BI Premium Capacity</option>
+                    <option value="custom">-- Add Custom Subscription --</option>
+                </select>
+                <input type="text" id="sub-name-custom" class="settings-input" style="display:none; margin-top:8px;" placeholder="Custom Subscription Name">
+            </div>
+            <div class="form-group">
+                <label>Monthly Cost ($)</label>
+                <input type="number" step="0.01" id="sub-cost" class="settings-input" placeholder="e.g. 30" required>
+            </div>
+            <div class="form-group">
+                <label>Billing Date</label>
+                <input type="text" id="sub-billing-date" class="settings-input" value="1st" placeholder="e.g. 15th" required>
+            </div>
+            <div class="modal-actions">
+                <button type="button" class="btn-cancel" onclick="closeAllModals()">Cancel</button>
+                <button type="submit" class="btn-submit">Add Subscription</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Pay/Refund Subscription Modal -->
+    <div id="modal-sub-action" class="modal-box" style="display: none;">
+        <div class="modal-header">
+            <h3 id="sub-action-title">Pay Subscription</h3>
+            <button class="modal-close" onclick="closeAllModals()">&times;</button>
+        </div>
+        <form id="form-sub-action">
+            <input type="hidden" id="sub-action-id">
+            <input type="hidden" id="sub-action-type"> <!-- 'Pay' or 'Refund' -->
+            <div class="form-group">
+                <label id="sub-action-cost-label">Cost: $0.00</label>
+            </div>
+            <div class="form-group">
+                <label id="sub-action-account-label">Pay Using Account</label>
+                <select id="sub-action-account-select" class="settings-input">
+                    <!-- Populated dynamically -->
+                </select>
+            </div>
+            <div class="modal-actions">
+                <button type="button" class="btn-cancel" onclick="closeAllModals()">Cancel</button>
+                <button type="submit" class="btn-submit" id="sub-action-submit-btn">Confirm Payment</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Set Budget Modal -->
+    <div id="modal-set-budget" class="modal-box" style="display: none;">
+        <div class="modal-header">
+            <h3>Set Monthly Budget</h3>
+            <button class="modal-close" onclick="closeAllModals()">&times;</button>
+        </div>
+        <form id="form-set-budget">
+            <div class="form-group">
+                <label>Spending Category</label>
+                <input type="text" id="budget-category" class="settings-input" placeholder="e.g. Azure, Subscriptions, Office Supplies" required>
+            </div>
+            <div class="form-group">
+                <label>Monthly Limit ($)</label>
+                <input type="number" step="0.01" id="budget-limit" class="settings-input" placeholder="e.g. 500" required>
+            </div>
+            <div class="modal-actions">
+                <button type="button" class="btn-cancel" onclick="closeAllModals()">Cancel</button>
+                <button type="submit" class="btn-submit">Set Budget</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Transaction Receipt Modal -->
+    <div id="modal-receipt" class="modal-box" style="display: none;">
+        <div class="modal-header">
+            <h3>Transaction Receipt</h3>
+            <button class="modal-close" onclick="closeAllModals()">&times;</button>
+        </div>
+        <div class="receipt-content">
+            <h2 class="receipt-title">SORA RECEIPT</h2>
+            <div class="receipt-divider"></div>
+            <div class="receipt-grid">
+                <span>Transaction ID:</span> <strong id="receipt-id">TXN-0000</strong>
+                <span>Date:</span> <strong id="receipt-date">2026-06-11</strong>
+                <span>Description:</span> <strong id="receipt-desc">Description</strong>
+                <span>Account:</span> <strong id="receipt-account">Account</strong>
+                <span>Category:</span> <strong id="receipt-category">Category</strong>
+                <span>Type:</span> <strong id="receipt-type">Type</strong>
+                <span>Amount:</span> <strong id="receipt-amount" class="text-income">$0.00</strong>
+            </div>
+        </div>
+        <div class="modal-actions">
+            <button type="button" class="btn-submit" style="width: 100%;" onclick="closeAllModals()">OK</button>
+        </div>
+    </div>
+
+    <!-- ==================== SCRIPTS ==================== -->
+
+    <script src="js/dashboard.js"></script>
+    <script src="js/agent.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

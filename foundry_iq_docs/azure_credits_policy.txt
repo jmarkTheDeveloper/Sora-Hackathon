@@ -1,0 +1,10 @@
+[Azure Credits Policy Guide]
+
+1. ALLOCATION AND MONITORING
+Microsoft Azure Credits are allocated to developers for research, development, and testing. Each developer workspace is eligible for a baseline of $500 USD in Azure Credits per month, sponsored by the Microsoft Agents League and regional developer accounts. 
+
+2. CRITICAL ALERT ON LIMITS
+Once the Azure Credits wallet drops below $50 USD, developers will receive automated alerts in their developer ledger. You should immediately suspend high-compute deployments (such as GPU-backed Virtual Machines or Azure AI services with high tokens throughput) to avoid service suspension.
+
+3. REPLENISHMENT PROTOCOL
+Azure Credit balances can be topped up by submitting a request to the project subscription administrator. Normal approval cycles take 2-3 business days. If a critical build is scheduled, request a temporary boost at least 48 hours in advance. Always keep a backup credit balance of 10% in your Work IQ Ledger to ensure zero downtime.

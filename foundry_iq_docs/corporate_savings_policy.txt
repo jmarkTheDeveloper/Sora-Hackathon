@@ -1,0 +1,10 @@
+[Corporate Savings and Expense Guidelines]
+
+1. THE GOLDEN RATIO
+For optimal financial health, the corporate savings standard recommends allocating at least 20% of your total monthly income directly to your Personal Savings Wallet. The remaining 80% should be split: 50% for core operational expenses (like subscriptions, utilities, and tools) and 30% for flexible budgets.
+
+2. COMBATTING OVERSPENDING
+If monthly expenses exceed 70% of total income, the team must immediately review and consolidate active subscriptions. Subscriptions that have not been actively logged or charged within the last 30 days must be suspended or refunded. 
+
+3. CASH RESERVES
+A minimum cash reserve of 3 months' worth of average monthly expenses must be maintained inside your primary Microsoft Pay account or Azure Credits wallet to safeguard against project delay risks. Avoid making large impulse investments if your combined balances are below this threshold.

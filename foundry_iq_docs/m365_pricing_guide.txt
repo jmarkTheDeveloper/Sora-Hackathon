@@ -1,0 +1,11 @@
+[Microsoft 365 and Developer Tools Pricing Guide]
+
+1. MICROSOFT 365 COPILOT
+Microsoft 365 Copilot (Enterprise tier) is billed at $30 USD per user per month. It is a recurring subscription billed on the 1st of every month. For teams looking to reduce expenses, licenses can be reassigned dynamically to active users, rather than purchasing new ones.
+
+2. GITHUB COPILOT PLANS
+- GitHub Copilot Pro: Billed at $10 USD per month. Recommended for individual developers.
+- GitHub Copilot Pro+ (Enterprise Plan): Billed at $39 USD per user per month. Includes advanced chat tools, index search, and security controls. Billed monthly on the developer's registered payment date.
+
+3. XBOX GAME PASS ULTIMATE
+Xbox Game Pass Ultimate is priced at $19.99 USD per month. For employee wellness programs, this cost can be fully reimbursed if claimed under the Wellness Allowance using the Work IQ Expense portal before the 25th of the month.
