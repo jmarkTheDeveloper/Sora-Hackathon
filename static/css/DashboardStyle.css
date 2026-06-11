@@ -1511,3 +1511,44 @@ body.theme-dark .receipt-content {
 .receipt-grid strong {
     color: var(--text-primary);
 }
+
+
+/* ==================== WELCOME OVERLAY ==================== */
+.welcome-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: var(--theme-gradient, linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%));
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), visibility 1s;
+}
+.welcome-content {
+    text-align: center;
+    color: white;
+    animation: welcomePop 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.welcome-logo {
+    font-size: 64px;
+    margin-bottom: 20px;
+}
+.welcome-text {
+    font-family: 'Outfit', sans-serif;
+    font-size: 48px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    margin: 0;
+}
+@keyframes welcomePop {
+    0% { transform: scale(0.8) translateY(20px); opacity: 0; }
+    100% { transform: scale(1) translateY(0); opacity: 1; }
+}
+.welcome-overlay.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}

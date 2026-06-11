@@ -1,6 +1,14 @@
 // ---------------- APPLICATION LIFE CYCLE & COORDINATION ----------------
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Reveal Welcome Animation
+    setTimeout(() => {
+        const overlay = document.getElementById('welcome-overlay');
+        if (overlay) {
+            overlay.classList.add('hidden');
+        }
+    }, 2000); // Fades out after 2 seconds
+
     // Automatically load default judge profile to bypass login screens
     const defaultUser = {
         userId: "USR-GUEST",

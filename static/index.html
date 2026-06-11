@@ -16,7 +16,13 @@
 </head>
 <body class="theme-blue">
 
-
+    <!-- ==================== WELCOME ANIMATION OVERLAY ==================== -->
+    <div id="welcome-overlay" class="welcome-overlay">
+        <div class="welcome-content">
+            <i class="fa-solid fa-feather-pointed welcome-logo"></i>
+            <h1 class="welcome-text">Welcome to Sora!</h1>
+        </div>
+    </div>
 
 
     <!-- ==================== DASHBOARD CONTAINER ==================== -->
@@ -285,6 +291,9 @@
                             <div class="chat-messages-area" id="chat-messages">
                                 <div class="chat-message agent">
                                     <p>Hello! I am Sora, your AI financial advisor grounded in your enterprise knowledge base via Microsoft Foundry IQ. Ask me anything about your budgets, savings strategies, or Azure credits!</p>
+                                </div>
+                                <div class="chat-message agent" style="background-color: #f0fdfb; border: 1px solid #bfdbfe; color: #1e3a8a;">
+                                    <p>💡 <strong>To Judges: How to Activate Full Azure OpenAI</strong><br><br>I am currently running in <strong>Local Offline Mode</strong> (no API key required) for zero-friction testing. <br><br>To activate my full LLM conversational capabilities:<br>1. Create a <code>.env</code> file in the project's root folder.<br>2. Add your <code>AZURE_OPENAI_API_KEY</code>, <code>AZURE_OPENAI_ENDPOINT</code>, and <code>AZURE_OPENAI_DEPLOYMENT_NAME</code>.<br>3. Restart the Python server.</p>
                                 </div>
                             </div>
                             
