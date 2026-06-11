@@ -1,10 +1,4 @@
-Here is the complete Markdown text for your `README.md` that you can copy and paste directly into GitHub:
-
-```markdown
 # Sora - Microsoft Foundry IQ Grounded Personal Finance Agent
-
-> [!NOTE]
-> **Disclaimer**: This project is built solely as an educational submission for the **Agents League Hackathon @ AI Skills Fest 2026**. It is not affiliated with, sponsored by, or endorsed by Microsoft Corporation.
 
 Sora is an intelligent, premium personal finance and budget tracking web application built for the **Agents League Hackathon @ AI Skills Fest 2026** under the **Creative Apps** track. 
 
@@ -107,10 +101,3 @@ Open your browser and navigate to:
 http://localhost:5000
 ```
 The dashboard loads immediately for the **Hackathon Judge**, fully pre-populated with realistic Microsoft wallets, transactions, goals, and budgets! If you edit or delete items during testing, simply click **"Reset Data"** at the bottom of the sidebar to restore the default database values.
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-```
